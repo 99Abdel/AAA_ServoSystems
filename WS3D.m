@@ -2,7 +2,7 @@ function [x_ws,y_ws,z_ws] = WS3D(L)
 % Calcolo dei Punti del Workspace 3D
 
 alfa_ws = linspace(0,2*pi,100);         % da 0 a 360 (0, 2*pi)
-beta_ws = linspace(-pi/2,pi/2,100);     % da -270 a 90 (-pi/2, pi/2)
+beta_ws = linspace(-pi/2,pi/2,100);     % da -90 a 90 (-pi/2, pi/2)
 gamma_ws = linspace(-pi,pi,100);        % da -180 a 180 (-pi, pi)
 
 l1 = L(1);
@@ -20,6 +20,7 @@ z_min = [];
 x_cil = [];
 y_cil = [];
 z_cil = [];
+
 
 for i = 1:length(alfa_ws)
     for j = 1:length(beta_ws)

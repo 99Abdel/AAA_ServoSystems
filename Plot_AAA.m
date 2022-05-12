@@ -1,4 +1,4 @@
-function Plot_AAA(Q,L,colore)
+function Plot_AAA(Q,L)
 % Plotta il robot nello spazio rappresentandolo nella configurazione
 % passata
     
@@ -22,7 +22,7 @@ function Plot_AAA(Q,L,colore)
     Z = [z0 z1 z2 z3];
     
     % Plot robot nello spazio:
-    plot3(X(1:2), Y(1:2), Z(1:2), 'LineWidth',2,'color',colore);
+    plot3(X(1:2), Y(1:2), Z(1:2), 'LineWidth',2,'color','r');
     plot3(X(2:3), Y(2:3), Z(2:3), 'LineWidth',2,'color','b');
     plot3(X(3:4), Y(3:4), Z(3:4), 'LineWidth',2,'color','g');
 
