@@ -1,28 +1,35 @@
-function plot_trajectory_AAA(Qi,Qf,L,X,Y,Z,n,N_figure,titolo,T)
+function Plot_Trajectory_AAA(Qi,Qf,L,X,Y,Z,n,titolo,T)
 % aggiungere un nono elemento di tempo per avere il plot animato di durata
 % T
-
-    Argomenti = 9;
-    N_figure = N_figure +1;
-
-    PlotSurface_AAA(L,N_figure)
+    
+    Argomenti = 8;
+    
+    figure
     hold on
-    Plot_AAA(Qi,L,'r',N_figure)
+    Plot_AAA(Qi,L,"xyz")
     
     if nargin > Argomenti
         dt = T/n;
         
         for i = 1:n
-            plot3(X(i),Y(i),Z(i),'->b')
+            plot3(X(i),Y(i),Z(i),'->m')
             pause(dt)
         end
         
     else
-         plot3(X,Y,Z,'->b')
+         plot3(X,Y,Z,'->m')
     end
     
-    Plot_AAA(Qf,L,'r',N_figure)
+    Plot_AAA(Qf,L,"xyz")
     title(titolo)
+    
+    grid on
+    axis equal
+    pbaspect([20 20 20])
+    xlabel('x')
+    ylabel('y')
+    zlabel('z')
+    hold off
     
 end
 
