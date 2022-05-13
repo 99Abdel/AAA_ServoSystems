@@ -1,5 +1,5 @@
 function WS2D_AAA(L,Qmax,Qmin,assi)
-% Calcolo dei Punti del Workspace 3D
+% Calcolo dei Punti del Workspace 2D
 
     if assi==1
 

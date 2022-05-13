@@ -40,6 +40,5 @@ zlabel('z')
 Qmin = [pi/2 0 -pi];
 Qmax = [0 0 0];
 
-
-WS2D_AAA(L,Qmax,Qmin);
+WS2D_AAA(L,Qmax,Qmin,2);
 
