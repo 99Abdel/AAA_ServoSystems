@@ -4,7 +4,7 @@ function WS3D_AAA(L,Qmax,Qmin)
     n = 100;
     a = linspace(0,2*pi,n);         % da 0 a 360 (0, 2*pi)
     b = linspace(-pi/2,pi/2,n);     % da -90 a 90 (-pi/2, pi/2)
-    c = linspace(0,2*pi,3);        % da 0 a 360 (0, 2*pi)
+    c = linspace(0,2*pi,3);         % da 0 a 360 (0, 2*pi)
     
     l1 = L(1);
     l2 = L(2);
@@ -51,6 +51,7 @@ function WS3D_AAA(L,Qmax,Qmin)
     xlabel('x')
     ylabel('y')
     zlabel('z')
+    hold off
 
 
 end
