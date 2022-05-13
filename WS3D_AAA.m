@@ -1,4 +1,4 @@
-function [x_ws,y_ws,z_ws] = WS3D_AAA(L)
+function WS3D_AAA(L,Qmax,Qmin)
 % Calcolo dei Punti del Workspace 3D
     
     n = 100;
@@ -36,6 +36,21 @@ function [x_ws,y_ws,z_ws] = WS3D_AAA(L)
     x_ws = [x_max x_min];
     y_ws = [y_max y_min];
     z_ws = [z_max z_min];
+
+    figure
+    hold on
+    grid on
+    plot3(x_ws,y_ws,z_ws,'.','color',[0.5 0.9 0.6],'MarkerSize',0.7)
+    
+    Plot_AAA(Qmax,L,"xyz")    % plot robot in max position
+    Plot_AAA(Qmin,L,"xyz")    % plot robot in min position
+    
+    title("Robot's Working Space (3D Rapresentation)")
+    axis equal
+    view(27,26)
+    xlabel('x')
+    ylabel('y')
+    zlabel('z')
 
 
 end
