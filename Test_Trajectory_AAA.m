@@ -50,7 +50,6 @@ for i=1:n
     S = [S s];
     
     
-    
     [a2(i),ap2(i),app2(i)] = cycloidLaw(t,T,Qi2(1),dQ2(1));
     [b2(i),bp2(i),bpp2(i)] = cycloidLaw(t,T,Qi2(2),dQ2(2));
     [c2(i),cp2(i),cpp2(i)] = cycloidLaw(t,T,Qi2(3),dQ2(3));
@@ -61,6 +60,7 @@ for i=1:n
     
     [s2,M01,M12,M23] = Rotation_Matrixes_AAA(q2,L); 
     S2 = [S2 s2];
+    
     
 end
 
