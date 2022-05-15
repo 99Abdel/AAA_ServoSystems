@@ -1,9 +1,9 @@
-function Plot_Trajectory_AAA(Qi,Qf,L,X,Y,Z,n,titolo,T)
+function Plot_Trajectory_AAA(Qi,Qf,L,X,Y,Z,n,T)
 % aggiungere un nono elemento di tempo per avere il plot animato di durata
 % T
 
-    Argomenti = 8;
-       
+    Argomenti = 7;
+    
     figure
     hold on
     Plot_AAA(Qi,L,"xyz")
@@ -21,7 +21,7 @@ function Plot_Trajectory_AAA(Qi,Qf,L,X,Y,Z,n,titolo,T)
     end
     
     Plot_AAA(Qf,L,"xyz")
-    title(titolo)
+    title("Traiettoria Robot")
     
     grid on
     axis equal

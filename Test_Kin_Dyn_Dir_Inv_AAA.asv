@@ -18,9 +18,9 @@ Qf = [0, 0, pi/2]';
 
 %-------- Inverse cinematic configuration ----------
 
-Si = [3.53 -1.5 13.5];
+Si = [2.14  15];
 Sf = [3 3 7];
-Qi_Inv = [0.1 -pi/4 -0.5*pi]+0.1;
+Qi_Inv = [0 -pi/2 0]+0.1;
 
 
 %% Law of motion
@@ -118,7 +118,7 @@ end
 %% Transizione Velocità da cartesiano a giunti angolari
 
 Nmax = 1000;
-toll = 1e-6;
+toll = 1e-5;
 
 Q_inv = [];
 Qp_inv = [];
@@ -126,7 +126,6 @@ Qpp_inv = [];
 
 % faccio la prima ricerca fuori in modo da partire con il punto corretto
 [q_inv,iter] = newtonRaphson(Si',Qi_Inv',L,toll,Nmax);
-disp(iter)
 Q_inv = [Q_inv q_inv];
 figure 
 hold on
