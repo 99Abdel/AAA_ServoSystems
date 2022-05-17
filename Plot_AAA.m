@@ -1,8 +1,8 @@
 function Plot_AAA(Q,L,dim)
-% IMPORTANTE:  Ricordarsi di fare hold on e hold off avvolgendo la funzione
-% Plotta il robot nello spazio rappresentandolo nella configurazione
-% passata
-    
+% Plotta il robot nella configurazione fornita in 2D o 3D
+
+% IMPORTANTE: ricordarsi l'uso di hold on e hold off per richiamare la funzione
+
     a = Q(1);     b = Q(2);     c = Q(3);
     l1 = L(1);    l2 = L(2);    l3 = L(3);
     
@@ -53,7 +53,7 @@ function Plot_AAA(Q,L,dim)
         plot3(X(1:2), Y(1:2), Z(1:2), 'LineWidth',2,'color','r');
         plot3(X(2:3), Y(2:3), Z(2:3), 'LineWidth',2,'color','b');
         plot3(X(3:4), Y(3:4), Z(3:4), 'LineWidth',2,'color','g');
-        
+
     end
 
 

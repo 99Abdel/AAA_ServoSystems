@@ -1,6 +1,5 @@
 function Plot_Trajectory_AAA(Qi,Qf,L,X,Y,Z,n,T)
-% aggiungere un nono elemento di tempo per avere il plot animato di durata
-% T
+% aggiungere un nono elemento di tempo per avere il plot animato di durata T
 
     Argomenti = 7;
     
