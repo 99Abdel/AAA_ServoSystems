@@ -19,10 +19,12 @@ Qf = [0, 0, pi/2]';
 
 %-------- Inverse cinematic configuration ----------
 
-Qini_Inv = [0.1 -pi/8 -0.5*pi];
-Si = [-2 -4 12];
-Sf = [-3 -5 8];
+Qini_Inv = [0.1 -pi/4 -0.5*pi];
+Si = [3.53 -1.5 13.5];
+Sf = [3 3 7];
 
+
+% Law of motion
 
 T = 5;
 n = 500;
@@ -30,8 +32,6 @@ dT = T/n;
 dQ = Qf-Qi;
 dS = Sf-Si;
 
-
-%-------- Direct cinematic angular Speed Matrixes ----------
 
 Lry= [0, 0, 1, 0;
       0, 0, 0, 0;
@@ -129,8 +129,7 @@ Qpp_inv = [];
 [q_inv,iter] = newtonRaphson(Si',Qini_Inv',L,toll,Nmax);
 disp(iter)
 Q_inv = [Q_inv q_inv];
-Qp_inv = [0;0;0];
-Qpp_inv = [0;0;0];
+
 
 [x,xp,xpp,tt] = cycloidValues(T,n,Si(1),dS(1));
 [y,yp,ypp,tt] = cycloidValues(T,n,Si(2),dS(2));
@@ -174,19 +173,20 @@ end
 
 %% plot configurations
 
-% Dati da cinematica diretta:
-Plot_Trajectory_AAA(Qi,Qf,L,S(1,:),S(2,:),S(3,:),n,"Giunti");
+% Dati da dinamica:
+Plot_Trajectory_AAA(Qi,Qf,L,S(1,:),S(2,:),S(3,:),n);
 
-% Dati da cinematica inversa:
-Plot_Trajectory_AAA(Q_inv(:,1),Q_inv(:,end),L,x,y,z,n,"Lineare");
+% Dati da cinematica:
+Plot_Trajectory_AAA(Q_inv(:,1),Q_inv(:,end),L,x,y,z,n);
 
 
 %% plot graph of data x,y,z position speed and acceleration
-
-Plot_Graphs_Dir_Kinematics_AAA(S,Sp,Spp,tt,dT)
+% NON FUNZIONA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+%Plot_Graphs_Dir_Kinematics_AAA(S,Sp,Spp,tt,dT)
 
 
 %% plot graph of data a,b,c position speed and acceleration
 
-Plot_Graphs_Inv_Kinematics_AAA(Q_inv,Qp_inv,Qpp_inv,tt,dT)
+% NON FUNZIONA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+%Plot_Graphs_Inv_Kinematics_AAA(Q_inv,Qp_inv,Qpp_inv,tt,dT)
 
