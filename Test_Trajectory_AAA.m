@@ -68,6 +68,5 @@ S = [S S2];
 
 %% plot configurations
 
-titolo = "Traiettoria Robot";
-Plot_Trajectory_AAA(Qi,Qf2,L,S(1,:),S(2,:),S(3,:),n,titolo);
+Plot_Trajectory_AAA(Qi,Qf2,L,S(1,:),S(2,:),S(3,:),n);
 
