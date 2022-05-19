@@ -17,7 +17,7 @@ function [S] = Direct_Kinematics_AAA(Q,L)
     % calcolati con le matrici di rotazione
     x = l2*cos(a)*cos(b) - l3*sin(a)*sin(c) + l3*cos(a)*cos(b)*cos(c);
     y = l2*sin(a)*cos(b) + l3*cos(a)*sin(c) + l3*sin(a)*cos(b)*cos(c);
-    z = l1 - l2*sin(b) - l3*cos(c)*sin(b);
+    z = l1 - l2*sin(b) - l3*sin(b)*cos(c);
     
     S = [x;y;z];
 
