@@ -8,7 +8,9 @@ function [S] = Direct_Kinematics_AAA(Q,L)
     l2 = L(2);
     l3 = L(3);
     
-%     % per plottare le aree sono state usate queste equazioni quindi funzionano
+%     % per plottare le aree sono state usate queste equazioni quindi
+%     funzionano (parzialmente perchè allineando i 2 giunti 1 e 2 e l'ultimo piegato
+%      di 90° sparisce perchè i coseni si annullano)
 %     x = l2*cos(b)*cos(a) + l3*cos(b)*cos(a+c);
 %     y = l2*cos(b)*sin(a) + l3*cos(b)*sin(a+c);
 %     z = l1 - l2*sin(b) - l3*cos(c)*sin(b);

@@ -9,6 +9,9 @@ clc
 Qmax = [0 0 0];
 Qmin = [0 -pi/4 -0.95*pi];
 
+%test voluto
+%Qmin = [0 -pi/4 pi/4];
+
 % Dimensione link:
 L = [10 5 2];
 
