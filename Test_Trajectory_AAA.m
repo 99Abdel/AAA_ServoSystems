@@ -68,5 +68,63 @@ S = [S S2];
 
 %% plot configurations
 
-Plot_Trajectory_AAA(Qi,Qf2,L,S(1,:),S(2,:),S(3,:),n);
+Plot_Trajectory_AAA(Qi,Qf2,L,S(1,:),S(2,:),S(3,:),n,'xyz');
+
+
+
+
+
+
+%% Test piano inclinato
+
+gamma = pi/4;
+
+[N01,N02,N03,N12,N23]=PianoInclinato(S,gamma);
+
+t = 1:7;
+tempo = t(1):dT:(t(end)-dT);
+
+% x = [0.6,0.45,0.42,0.55,0.42,0.45,0.6]-0.6;
+% y = [0.66,0.64,0.55,0.55,0.55,0.4,0.38]-0.66;
+x = [0.6,0.45,0.42,0.55,0.42,0.45,0.6]*15;
+y = [0.66,0.64,0.55,0.55,0.55,0.4,0.38]*15;
+
+[xe,xpe,xppe] = Spline(t,x);
+[ye,ype,yppe] = Spline(t,y);
+
+ze = zeros(1,length(xe));
+zpe = zeros(1,length(xe));
+zppe = zeros(1,length(xe));
+
+Pe_primo = diag([1 1 1 1]);
+Pep_primo = diag([1 1 1 1]);
+Pepp_primo = diag([1 1 1 1]);
+
+
+for i=1:length(tempo)
+
+    Pe_primo(1,4) = xe(i);
+    Pe_primo(2,4) = ye(i);
+    Pe_primo(3,4) = ze(i);
+    Pe = N03*Pe_primo*N03';
+    P2_e(:,i) = Pe(1:3,end);
+
+end
+
+
+figure
+Plot_AAA(Qi(:,end),L,'xyz')
+hold on
+grid on
+plot3(P2_e(1,:),P2_e(2,:),P2_e(3,:),'r--')
+legend('','','Trajectory');
+title('e');
+pbaspect([20 20 20])
+xlabel('x');
+ylabel('y');
+zlabel('z');
+view(27,26)
+hold off
+
+Plot_Trajectory_AAA(Qi,Qf2,L,P2_e(1,:),P2_e(2,:),P2_e(3,:),n,'xyz');
 
