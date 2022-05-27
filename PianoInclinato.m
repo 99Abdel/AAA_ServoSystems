@@ -24,6 +24,11 @@ function [N01,N02,N03,N12,N23] = PianoInclinato(S,gamma)
     N03 = N01*N12*N23;
 
     N02 = N01*N12;
+    
+     M01 = [cos(b),   0,  sin(b),  l2*cos(b);
+            0,       1,    0,         0;
+           -sin(b),  0,  cos(b),  -l2*sin(b);
+            0,       0,    0,         1];
 
 
 end
