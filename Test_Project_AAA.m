@@ -52,3 +52,8 @@ ciccio = l2*cos(a)*cos(b) - l3*sin(a)*sin(c) + l3*cos(a)*cos(b)*cos(c);
 abdel = l2*cos(a)*cos(b) + l3*cos(b)*cos(a+c);
 
 pippo = l2*cos(a)*cos(b) + l3*cos(b)*[-sin(a)*sin(c) + cos(a)*cos(c)]; % == abdel
+
+%% osservare det Jac = 0 per vedere dopve sono le singolarità
+
+detJ = det(J);
+factor(detJ);
