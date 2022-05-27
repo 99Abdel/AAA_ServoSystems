@@ -21,22 +21,3 @@ pbaspect([20,20,20]);
 axis equal
 hold off
 
-
-% for i = 6:8
-%   
-%     q = [pi/6,0,pi/6]*i;
-%     
-%     Q = [Q q'];
-%     
-%     Plot_AAA(q,L,"xyz")
-% 
-% 
-%     S = Direct_Kinematics_AAA(q,L);
-% 
-%     q2 = Inverse_Kinematics_AAA(S,L);
-% 
-%     Q2 = [Q2 q2'];
-% 
-%     Plot_AAA(q2,L,"xyz")
-% 
-% end
