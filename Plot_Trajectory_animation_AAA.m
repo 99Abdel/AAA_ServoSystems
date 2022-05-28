@@ -14,9 +14,13 @@ function Plot_Trajectory_animation_AAA(Q,S,L,n,T,tipo)
     
     for i = 1:n
         plot3(S(1,i),S(2,i),S(3,i),'->m')
-        Plot_AAA(Q(:,i),L,"xyz")
+        if i > 1
+            delete(n_plot);
+        end
+        
+        n_plot = Plot_AAA(Q(:,i),L,"xyz");
         pause(dt)
-        %delete(Q(:,i))
+        
     end
        
     hold off

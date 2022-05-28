@@ -1,4 +1,4 @@
-function Plot_AAA(Q,L,dim)
+function n_plot = Plot_AAA(Q,L,dim)
 % Plotta il robot nella configurazione fornita in 2D o 3D
 
 % IMPORTANTE: ricordarsi l'uso di hold on e hold off per richiamare la funzione
@@ -50,11 +50,12 @@ function Plot_AAA(Q,L,dim)
     elseif dim == "xyz"
         
         % Plot robot nello spazio 3D:
-        plot3(X(1:2), Y(1:2), Z(1:2), 'LineWidth',2,'color','r');
-        plot3(X(2:3), Y(2:3), Z(2:3), 'LineWidth',2,'color','b');
-        plot3(X(3:4), Y(3:4), Z(3:4), 'LineWidth',2,'color','g');
+        n_plot(1) = plot3(X(1:2), Y(1:2), Z(1:2), 'LineWidth',2,'color','r');
+        n_plot(2) = plot3(X(2:3), Y(2:3), Z(2:3), 'LineWidth',2,'color','b');
+        n_plot(3) = plot3(X(3:4), Y(3:4), Z(3:4), 'LineWidth',2,'color','g');
 
     end
 
 
 end
+
