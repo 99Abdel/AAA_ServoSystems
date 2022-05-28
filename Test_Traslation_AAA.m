@@ -145,8 +145,3 @@ grid on
 hold off
 
 
-
-
-
-
-

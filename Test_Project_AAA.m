@@ -1,5 +1,6 @@
 clear all
 close all
+clc
 
 %% Inizio
 
@@ -45,15 +46,54 @@ syms a(t) b(t) c(t);
 
 Jacp = diff(Jac,'t');
 
-l2 = 2; l3 = 3; a = 0.8; b =1.5; c = 3.14; 
 
-ciccio = l2*cos(a)*cos(b) - l3*sin(a)*sin(c) + l3*cos(a)*cos(b)*cos(c);
-
-abdel = l2*cos(a)*cos(b) + l3*cos(b)*cos(a+c);
-
-pippo = l2*cos(a)*cos(b) + l3*cos(b)*[-sin(a)*sin(c) + cos(a)*cos(c)]; % == abdel
 
 %% osservare det Jac = 0 per vedere dopve sono le singolarità
 
-detJ = det(J);
-factor(detJ);
+detJ = det(Jac);
+
+% f = factor(detJ);
+% 
+% eq1 = @(a,b,c) l3^3*cos(a)^2*cos(b)^3*cos(c)^2*sin(c) - l3^3*cos(b)*cos(c)^2*sin(a)^2*sin(c) - l3^3*cos(a)^2*cos(b)*cos(c)^2*sin(c) + l3^3*cos(b)^3*cos(c)^2*sin(a)^2*sin(c) + l2^2*l3*cos(a)^2*cos(b)^3*sin(c) + l2^2*l3*cos(b)^3*sin(a)^2*sin(c) - l2*l3^2*cos(a)^2*cos(b)*cos(c)*sin(c) - l2*l3^2*cos(b)*cos(c)*sin(a)^2*sin(c) + l3^3*cos(a)^2*cos(b)*cos(c)^2*sin(b)^2*sin(c) + l3^3*cos(b)*cos(c)^2*sin(a)^2*sin(b)^2*sin(c) + 2*l2*l3^2*cos(a)^2*cos(b)^3*cos(c)*sin(c) + l2^2*l3*cos(a)^2*cos(b)*sin(b)^2*sin(c) + 2*l2*l3^2*cos(b)^3*cos(c)*sin(a)^2*sin(c) + l2^2*l3*cos(b)*sin(a)^2*sin(b)^2*sin(c) + 2*l2*l3^2*cos(a)^2*cos(b)*cos(c)*sin(b)^2*sin(c) + 2*l2*l3^2*cos(b)*cos(c)*sin(a)^2*sin(b)^2*sin(c);
+
+%eq = matlabFunction(detJ,'vars',{[a,b,c],l1,l2,l3});
+
+l1 = 10;
+l2 = 5;
+l3 = 2;
+
+% casi_zero = fsolve(eq1,rand(1,3))
+% fimplicit3(eq1)
+
+
+
+%% Posizioni singolarità
+
+% gamma = 0,180   % per ogni alpha e beta
+% beta = -90,90   % per ogni alpha e gamma
+% 
+% a=0;
+% b= 0;
+% c=0;
+% 
+% 
+% l3^3*cos(a)^2*cos(b)^3*cos(c)^2*sin(c);
+% l3^3*cos(b)*cos(c)^2*sin(a)^2*sin(c);
+% l3^3*cos(a)^2*cos(b)*cos(c)^2*sin(c);
+% l3^3*cos(b)^3*cos(c)^2*sin(a)^2*sin(c); 
+% l2^2*l3*cos(a)^2*cos(b)^3*sin(c);
+% l2^2*l3*cos(b)^3*sin(a)^2*sin(c);
+% l2*l3^2*cos(a)^2*cos(b)*cos(c)*sin(c); 
+% l2*l3^2*cos(b)*cos(c)*sin(a)^2*sin(c);
+% l3^3*cos(a)^2*cos(b)*cos(c)^2*sin(b)^2*sin(c); 
+% l3^3*cos(b)*cos(c)^2*sin(a)^2*sin(b)^2*sin(c); 
+% 2*l2*l3^2*cos(a)^2*cos(b)^3*cos(c)*sin(c);
+% l2^2*l3*cos(a)^2*cos(b)*sin(b)^2*sin(c);
+% 2*l2*l3^2*cos(b)^3*cos(c)*sin(a)^2*sin(c); 
+% l2^2*l3*cos(b)*sin(a)^2*sin(b)^2*sin(c);
+% 2*l2*l3^2*cos(a)^2*cos(b)*cos(c)*sin(b)^2*sin(c);
+% 2*l2*l3^2*cos(b)*cos(c)*sin(a)^2*sin(b)^2*sin(c);
+
+c = pi;
+l3^3*cos(a)^2*cos(b)^3*cos(c)^2*sin(c) - l3^3*cos(b)*cos(c)^2*sin(a)^2*sin(c) - l3^3*cos(a)^2*cos(b)*cos(c)^2*sin(c) + l3^3*cos(b)^3*cos(c)^2*sin(a)^2*sin(c) + l2^2*l3*cos(a)^2*cos(b)^3*sin(c) + l2^2*l3*cos(b)^3*sin(a)^2*sin(c) - l2*l3^2*cos(a)^2*cos(b)*cos(c)*sin(c) - l2*l3^2*cos(b)*cos(c)*sin(a)^2*sin(c) + l3^3*cos(a)^2*cos(b)*cos(c)^2*sin(b)^2*sin(c) + l3^3*cos(b)*cos(c)^2*sin(a)^2*sin(b)^2*sin(c) + 2*l2*l3^2*cos(a)^2*cos(b)^3*cos(c)*sin(c) + l2^2*l3*cos(a)^2*cos(b)*sin(b)^2*sin(c) + 2*l2*l3^2*cos(b)^3*cos(c)*sin(a)^2*sin(c) + l2^2*l3*cos(b)*sin(a)^2*sin(b)^2*sin(c) + 2*l2*l3^2*cos(a)^2*cos(b)*cos(c)*sin(b)^2*sin(c) + 2*l2*l3^2*cos(b)*cos(c)*sin(a)^2*sin(b)^2*sin(c)
+

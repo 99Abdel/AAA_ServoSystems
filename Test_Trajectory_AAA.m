@@ -4,9 +4,9 @@ clear all
 close all
 clc
 
-l1 = 10;   % 
-l2 = 5;   % 
-l3 = 2;   % 
+l1 = 10;
+l2 = 5;
+l3 = 2;
 
 
 L = [l1 l2 l3]';
