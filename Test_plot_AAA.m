@@ -24,7 +24,7 @@ WS3D_AAA(L,Qmax,Qmin);
 %% Test plot Workingspace 2D:
 
 
-Qmin = [pi/4 0 -pi];
+Qmin = [pi/4 0 -pi/2];
 Qmax = [0 0 0];
 WS2D_AAA(L,Qmax,Qmin,'xy');
 

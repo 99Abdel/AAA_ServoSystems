@@ -1,5 +1,6 @@
 clear all
 close all
+clc
 
 L = [10,5,3];
 S = [4,4,12];
@@ -19,5 +20,11 @@ Plot_AAA(Q4,L,"xyz");
 
 pbaspect([20,20,20]);
 axis equal
+grid on
 hold off
 
+A = [0,-1];
+B = [0,1];
+C = [1,0];
+
+[xc,yc,r] = Find_Circ(A,B,C)
