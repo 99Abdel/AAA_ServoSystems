@@ -24,8 +24,8 @@ Qs = [];
 
 for i = 1:n
     
-    s1 = rototrasla_Punto(S(:,i),alpha,T);
-    ss = rototrasla_Punto(S_specchiato(:,i),alpha,T);
+    s1 = rototrasla_Punto(S(:,i),alpha,T,'y');
+    ss = rototrasla_Punto(S_specchiato(:,i),alpha,T,'y');
     
     S1 = [S1 s1];
     SS = [SS ss];
@@ -72,7 +72,7 @@ Plot_Trajectory_animation_AAA(Q_tot,[S1 SS],L,2*n,10,"Cartesiano")
 
 
 
-%% Test 3
+%% Test traiettoria numero 3
 
 clear all
 close all

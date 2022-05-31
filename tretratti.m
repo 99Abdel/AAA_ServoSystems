@@ -10,7 +10,7 @@ function [x,xp,xpp]=tretratti(t,T,S0,dS,lambda1,lambda3)
 % l3 lambda3 (durata 3^ intervallo/T  0<l3<1)
 % 
 % si assume Vini=Vfin=0
-%
+
 V=dS/T*2/(2-lambda1-lambda3);
 A=dS/T^2*2/(lambda1*(2-lambda1-lambda3));
 D=dS/T^2*2/(lambda3*(2-lambda1-lambda3));
