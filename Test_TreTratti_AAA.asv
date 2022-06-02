@@ -1,0 +1,75 @@
+clear all
+close all
+clc
+
+n = int32(pi*300); Vmax = 5; Amax = 10; Dmax = 10; lambda1 = 0.6; lambda3 = 0.5;
+T = 5; R = 2;
+theta = linspace(0,pi,n);
+z = zeros(1,n);
+dT = T/n;
+
+
+x = R*cos(theta);
+%x = linspace(2,-2,n);
+y = R*sin(theta);
+
+
+[xp,xpp,tt] = treTrattiValues_AAA(T,x,Vmax,Amax,Dmax,lambda1,lambda3);
+[yp,ypp,tt] = treTrattiValues_AAA(T,y,Vmax,Amax,Dmax,lambda1,lambda3);
+[zp,zpp,tt] = treTrattiValues_AAA(T,z,Vmax,Amax,Dmax,lambda1,lambda3);
+
+S = [x;y;z];
+Sp = [xp;yp;zp];
+Spp = [xpp;ypp;zpp];
+
+Plot_Graphs_Dir_Kinematics_noDebug_AAA(S,Sp,Spp,tt);
+
+
+%% Test traiettoria numero 3
+
+clear all
+close all
+clc
+
+L = [10, 7, 4];
+
+A = [6,4];
+B = [4,2];
+C = [3,3];
+
+D = C;
+E = [2,2];
+F = [0,4];
+
+[xc1,yc1,r1] = Find_Circ(A,B,C);
+n = 50;
+th1 = linspace(pi/6,-pi,n);
+
+x1 = r1*cos(th1) + xc1;
+
+y1 = r1*sin(th1) + yc1;
+
+z1 = zeros(1,n);
+
+S = [x1;y1;z1];
+S1 = [];
+
+alpha = -pi/4;
+T = [5,0,10];
+
+Q = [];
+Qs = [];
+
+
+for i = 1:2*n
+    
+    s1 = rototrasla_Punto(S(:,i),alpha,T,'y');
+    S1 = [S1 s1];
+    q = Inverse_Kinematics_AAA(s1,L,2)';
+    Q = [Q q];
+    
+end
+
+Plot_Trajectory_animation_AAA(Q,S1,L,2*n,10,"Cartesiano")
+
+
