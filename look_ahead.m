@@ -10,7 +10,8 @@ function [x,xp,xpp]=look_ahead(t,T,S,lambda1,lambda3)
 % l3 lambda3 (durata 3^ intervallo/T  0<l3<1)
 
 
-    Amax_robot = 10;      % dovremmo dargli un valore di targa
+    Amax_robot = 10;      % dovremmo dargli un valore di targa [m/s^2]
+    Vmax_robot = 10;      % dovremmo dargli un valore di targa [m/s]
 
     % devo suddividere il tempo in due parti doverse per capire se è
     % possibile raggiungere la velocità massima
@@ -53,8 +54,8 @@ function [x,xp,xpp]=look_ahead(t,T,S,lambda1,lambda3)
     % curve più dolci
 
 
-    Vmax_acc = Vi+A_tratto*percentuale_Acc*T;
-    Vmax_dec = Vmax_acc+D_tratto*percentuale_Dec*T;
+    Vmax_acc = Vi+A_tratto*(percentuale_Acc*T);
+    Vmax_dec = Vmax_acc+D_tratto*(percentuale_Dec*T);
 
 
     
