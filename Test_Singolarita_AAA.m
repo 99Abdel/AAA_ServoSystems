@@ -2,6 +2,7 @@ clear all
 close all
 clc
 
+
 l1 = 10; l2 = 5; l3 = 2;
 n = (pi^4);
 toll = 1e-13;
@@ -39,6 +40,7 @@ for i=a
     
 end
 
+
 dot_size = 3;
 
 figure
@@ -59,7 +61,13 @@ zlabel('z')
 grid on
 axis equal
 
-%% con fimpicit come verifica.
+
+
+%% con fimpicit come verifica
+% strana la gestione nei punti di incrocio (lati smussati), assenza punti
+% robot disteso (tetti o parte)
+
 fun = @(i,j,k) l3^3*cos(i)^2*cos(j)^3*cos(k)^2*sin(k) - l3^3*cos(j)*cos(k)^2*sin(i)^2*sin(k) - l3^3*cos(i)^2*cos(j)*cos(k)^2*sin(k) + l3^3*cos(j)^3*cos(k)^2*sin(i)^2*sin(k) + l2^2*l3*cos(i)^2*cos(j)^3*sin(k) + l2^2*l3*cos(j)^3*sin(i)^2*sin(k) - l2*l3^2*cos(i)^2*cos(j)*cos(k)*sin(k) - l2*l3^2*cos(j)*cos(k)*sin(i)^2*sin(k) + l3^3*cos(i)^2*cos(j)*cos(k)^2*sin(j)^2*sin(k) + l3^3*cos(j)*cos(k)^2*sin(i)^2*sin(j)^2*sin(k) + 2*l2*l3^2*cos(i)^2*cos(j)^3*cos(k)*sin(k) + l2^2*l3*cos(i)^2*cos(j)*sin(j)^2*sin(k) + 2*l2*l3^2*cos(j)^3*cos(k)*sin(i)^2*sin(k) + l2^2*l3*cos(j)*sin(i)^2*sin(j)^2*sin(k) + 2*l2*l3^2*cos(i)^2*cos(j)*cos(k)*sin(j)^2*sin(k) + 2*l2*l3^2*cos(j)*cos(k)*sin(i)^2*sin(j)^2*sin(k);
 figure
 H = fimplicit3(fun,[0 2*pi]);
+

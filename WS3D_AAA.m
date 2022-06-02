@@ -33,6 +33,7 @@ function WS3D_AAA(L,Qmax,Qmin)
         end
     end
     
+    
     x_ws = [x_max x_min];
     y_ws = [y_max y_min];
     z_ws = [z_max z_min];

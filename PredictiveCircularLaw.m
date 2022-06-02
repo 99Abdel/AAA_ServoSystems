@@ -32,6 +32,7 @@ function [x,xp,xpp] = PredictiveCircularLaw(t,T,S0,S1)
     xp = -A*(T/(2*pi))*cos((2*pi*t)/T) + V;
     x = -A*((T/(2*pi))^2)*sin((2*pi*t)/T) + A*(T/(2*pi))*t + U;
 
+    
 end
 
            
