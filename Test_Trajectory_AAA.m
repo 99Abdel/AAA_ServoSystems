@@ -1,5 +1,8 @@
 %% definition initial data
 
+% disegna un 3 nello spazio inclinato nel piano inclinato a caso con i
+% giunti.
+
 clear all
 close all
 clc

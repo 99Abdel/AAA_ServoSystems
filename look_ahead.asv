@@ -1,4 +1,4 @@
-function [x,xp,xpp]=look_ahead(t,T,S,Vi,Vf)
+function [x,xp,xpp]=look_ahead(t,T,S,lambda1,lambda3)
 %
 % regole magiche look ahead
 % Minimizzare il tempo di attuazione in tutto l'intervallo
@@ -25,18 +25,14 @@ function [x,xp,xpp]=look_ahead(t,T,S,Vi,Vf)
     
     S_ast = (Vmax-Vi)^2/2*(Amax+Dmax)/(Amax*Dmax);
     
-    % tempo minimo attuazione
+    
     if S > S_ast
         
        T = S/(Vmax-Vi)+(Vmax-Vi)/2*(Amax+Dmax)/(Amax*Dmax);
-       
+        
     else if S == S_ast
         
-        T = 2*S/(Vmax-Vi);
-        
-    else % S < S_ast
-            
-        T = sqrt(2*S*(Amax+Dmax)/(Amax*Dmax));
+        T = 2*S/()
             
     end
     

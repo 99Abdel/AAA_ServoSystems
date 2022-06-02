@@ -2,6 +2,9 @@ close all
 clear all
 clc
 
+% DISEGNA UNA X NELLO SPAZIO E POI UN 3 IN COORDIANTE CARTESIANE ENTRAMBI
+% SU UN PIANO INCLINATO RISPETTO AGLI ASSI PRINCIPALI
+
 n = 20;
 L = [10, 5, 2];
 
@@ -62,11 +65,6 @@ grid on
 hold off
 
 Plot_Trajectory_animation_AAA(Q_tot,[S1 SS],L,2*n,10,"Cartesiano")
-
-
-
-
-
 
 
 
@@ -143,5 +141,4 @@ axis equal
 pbaspect([20 20 20])
 grid on
 hold off
-
 
