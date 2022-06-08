@@ -118,30 +118,19 @@ s = [0 s_tot];
 S = [];
 Sp = [];
 Spp = [];
-
-Y = [];
-Yp = [];
-Ypp = [];
-
 TT = [];
 N = 50;
 for i = 1:n
    
     T_tratto = ta(i)+tb(i)+tc(i);
     [x,xp,xpp,tt] = treTrattiValues_Abdel(T_tratto,N,s(i),L(i),Vn_f23(i),A,D,ta(i),tb(i),tc(i));
-    
     ss = linspace(s(i),s(i+1),N);
-    [yp,ypp] = treTrattiValues_LookAhead(T_tratto,ss,Vn_f23(i),Vn_f23(i+1),A,D,ta(i),tb(i),tc(i));
+    
+    [yp,ypp] = treTrattiValues_LookAhead(T_tratto,ss,
     
     S = [S x];
     Sp = [Sp xp];
     Spp = [Spp xpp];
-    
-    Y = [Y ss];
-    Yp = [Yp yp];
-    Ypp = [Ypp ypp];
-    
-    
     if i == 1
         TT = [TT tt];
     else
@@ -150,8 +139,5 @@ for i = 1:n
     
 end
 
-figure
 treTrattiPlot(TT,S,Sp,Spp,"Cartesiano")
 
-figure
-treTrattiPlot(TT,Y,Yp,Ypp,"Cartesiano")
