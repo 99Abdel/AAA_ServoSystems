@@ -1,4 +1,4 @@
-function [xp,xpp]=tretratti_LookAhead(t,T,i,S,V,Vf,A,D,T1,T2,T3)
+function [xp,xpp]=tretratti_LookAhead(t,T,i,S,Vi,Vf,V,A,D,T1,T2,T3)
 %
 % legge di moto TreTratti (acc.costante)
 %
@@ -17,7 +17,7 @@ function [xp,xpp]=tretratti_LookAhead(t,T,i,S,V,Vf,A,D,T1,T2,T3)
     if t<T1
        %x=1/2*A*t^2+S0;
        %xp=Vi+A*t;
-       xp=sqrt(V(i-1)^2 + 2*A*(abs(S(i)-S(i-1))));
+       xp = sqrt(V(i-1)^2 + 2*A*(abs(S(i)-S(i-1))));
        xpp=A;
     else
         

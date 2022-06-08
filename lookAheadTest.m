@@ -36,6 +36,8 @@ t_tot = zeros(1,n);
 l = zeros(1,n);
 t = zeros(1,n);
 
+%% Look Ahead fasi Set Velocità nodi
+
 % Fase 1
 vel = min(Vn(1),Vt(1));
 Vn_f1(1) = min(vel);
@@ -72,7 +74,8 @@ for i = n:-1:1
 end
 
 
-% Calcolo Tempi
+%% Look Ahead fase Calcolo Tempi
+
 for i = 1:n
     
     ta(i) = (Vt(i)-Vn_f23(i))/A;
@@ -125,22 +128,28 @@ Ypp = [];
 
 TT = [];
 N = 50;
+
 for i = 1:n
    
-    T_tratto = ta(i)+tb(i)+tc(i);
+    % velocità in funzione del tempo
+    T_tratto = ta(i)+tb(i)+tc(i); %periodo della tretratti
     [x,xp,xpp,tt] = treTrattiValues_Abdel(T_tratto,N,s(i),L(i),Vn_f23(i),A,D,ta(i),tb(i),tc(i));
     
-    ss = linspace(s(i),s(i+1),N);
+    % velocità in funzione dello spazio
+    ss = linspace(s(i),s(i+1),N);%spazio percorso nella tretratti
     [yp,ypp] = treTrattiValues_LookAhead(T_tratto,ss,Vn_f23(i),Vn_f23(i+1),A,D,ta(i),tb(i),tc(i));
     
+    % vettori di spostamento velocità  e acc totali nei 5 tratti in
+    % funzione del tempo
     S = [S x];
     Sp = [Sp xp];
     Spp = [Spp xpp];
     
+    % vettori di spostamento velocità  e acc totali nei 5 tratti in
+    % funzione dello spostamento
     Y = [Y ss];
     Yp = [Yp yp];
     Ypp = [Ypp ypp];
-    
     
     if i == 1
         TT = [TT tt];
