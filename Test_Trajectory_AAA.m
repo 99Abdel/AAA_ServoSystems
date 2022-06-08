@@ -1,16 +1,17 @@
 %% definition initial data
 
-% disegna un 3 nello spazio inclinato nel piano inclinato a caso con i
+% Disegna un 3 nello spazio inclinato nel piano inclinato a caso con i
 % giunti.
+
 
 clear all
 close all
 clc
 
+
 l1 = 10;
 l2 = 5;
 l3 = 2;
-
 
 L = [l1 l2 l3]';
 

@@ -34,6 +34,7 @@ function [Q] = Inverse_Kinematics_AAA(S,L,n)
  
     end
     
+    
     Q = [a,b,c];
     
     if(~isreal(Q))

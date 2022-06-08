@@ -5,6 +5,7 @@ function [N01,N02,N03,N12,N23] = PianoInclinato(S,gamma)
     yp2 = S(2,end);
     zp2 = S(3,end);
     
+    
     N01 = [1,            0,             0,   -xp2;
            0,   cos(gamma),   -sin(gamma),   -yp2;
            0,   sin(gamma),    cos(gamma),   -zp2;

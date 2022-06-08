@@ -44,5 +44,6 @@ function [S,M01,M12,M23] = Rotation_Matrixes_AAA(Q,L)
     % Vettore contenente posizione in cartesiano X, Y, Z:
     S = M03(:,4);
 
+    
 end
 

@@ -2,8 +2,9 @@ close all
 clear all
 clc
 
-% DISEGNA UNA X NELLO SPAZIO E POI UN 3 IN COORDIANTE CARTESIANE ENTRAMBI
-% SU UN PIANO INCLINATO RISPETTO AGLI ASSI PRINCIPALI
+% Disegna una X nello spazio e poi un 3, entrambi in coordinate cartesia e 
+% su un piano inclinato rispetto a un asse 
+
 
 n = 20;
 L = [10, 5, 2];

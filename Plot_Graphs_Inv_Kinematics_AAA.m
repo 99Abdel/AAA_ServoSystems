@@ -1,7 +1,6 @@
 function Plot_Graphs_Inv_Kinematics_AAA(Q,Qp,Qpp,tt,dT)
 % Plots graphs with data position of gripper x,y,z angular speed and acceleration.
     
-
     % calcolo dei valori teorici di velocità e accelerazione 
     [Qpt(1,:),Qppt(1,:)] = theorethicalDiff(Q(1,:),dT);
     [Qpt(2,:),Qppt(2,:)] = theorethicalDiff(Q(2,:),dT);
