@@ -17,14 +17,14 @@ function [xp,xpp]=tretratti_LookAhead(t,T,i,S,Vi,Vt,Vf,V,A,D,T1,T2,T3)
     if t<T1
        %x=1/2*A*t^2+S0;
        %xp=Vi+A*t;
-       if V(i-1) < Vt
+       if V(i-1) > Vf
            xp = sqrt(V(i-1)^2 + 2*A*(abs(S(i)-S(i-1))));
            xpp=A;
-       else
-           xp = Vt;
-           xpp = 0;
-       end
-       
+           else
+               xp = Vt;
+               xpp = 0;
+           end
+
     else
         
        if t<Ta

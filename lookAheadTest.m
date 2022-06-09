@@ -56,7 +56,7 @@ Vn_f1(n+1) = min(vel);
 % Fase 2
 for i = 1:n
     
-    Vnf = sqrt(Vn(i)^2 + 2*A*L(i));
+    Vnf = sqrt(Vn_f1(i)^2 + 2*A*L(i));
     vel = [Vn_f1(i+1),Vnf];
     Vn_f23(i+1) = min(vel);
     
@@ -67,8 +67,8 @@ a = 0;
 % Fase 3
 for i = n:-1:1
     
-    Vni = sqrt(Vn(i+1)^2 + 2*D*L(i));
-    vel = [Vn_f1(i),Vni];
+    Vni = sqrt(Vn_f23(i+1)^2 + 2*D*L(i));
+    vel = [Vn_f23(i),Vni];
     Vn_f23(i) = min(vel);
     
 end
@@ -127,7 +127,7 @@ Yp = [];
 Ypp = [];
 
 TT = [];
-N = 50;
+N = 500;
 
 for i = 1:n
    
@@ -137,7 +137,7 @@ for i = 1:n
     
     % velocità in funzione dello spazio
     ss = linspace(s(i),s(i+1),N);%spazio percorso nella tretratti
-    [yp,ypp] = treTrattiValues_LookAhead(T_tratto,ss,Vn_f23(i),Vn_f23(i+1),A,D,ta(i),tb(i),tc(i));
+    [yp,ypp] = treTrattiValues_LookAhead(T_tratto,ss,Vn_f23(i),Vt(i),Vn_f23(i+1),A,D,ta(i),tb(i),tc(i));
     
     % vettori di spostamento velocità  e acc totali nei 5 tratti in
     % funzione del tempo
@@ -164,3 +164,20 @@ treTrattiPlot(TT,S,Sp,Spp,"Cartesiano")
 
 figure
 treTrattiPlot(TT,Y,Yp,Ypp,"Cartesiano")
+
+%%
+
+LL(1)=0;
+LL(2)=L(1);
+VV(1)=Vt(1);
+VV(2)=Vt(1);
+for i=2:n
+    LL(2*i-1)=LL(2*i-2);
+    LL(2*i)=LL(2*i-1)+L(i);
+    VV(2*i-1)=Vt(i);
+    VV(2*i)=Vt(i);
+end
+ 
+figure
+plot(LL,VV,Y,Yp)
+
