@@ -9,6 +9,8 @@ close all
 % generalizzare la tre tratti in modo da partire da velocità v1 e finire a
 % velocità v2  non per forza uguali a zero.
 
+
+N = 500;
 n = 5;
 L = [1.5, 3, 4, 1, 2];
 Vt = [1, 1.5, 0.5, 2, 3];
@@ -122,34 +124,20 @@ S = [];
 Sp = [];
 Spp = [];
 
-Y = [];
-Yp = [];
-Ypp = [];
-
 TT = [];
-N = 500;
+
 
 for i = 1:n
    
-    % velocità in funzione del tempo
-    T_tratto = ta(i)+tb(i)+tc(i); %periodo della tretratti
-    [x,xp,xpp,tt] = treTrattiValues_Abdel(T_tratto,N,s(i),L(i),Vn_f23(i),A,D,ta(i),tb(i),tc(i));
-    
     % velocità in funzione dello spazio
     ss = linspace(s(i),s(i+1),N);%spazio percorso nella tretratti
-    [yp,ypp] = treTrattiValues_LookAhead(T_tratto,ss,Vn_f23(i),Vt(i),Vn_f23(i+1),A,D,ta(i),tb(i),tc(i));
-    
-    % vettori di spostamento velocità  e acc totali nei 5 tratti in
-    % funzione del tempo
-    S = [S x];
-    Sp = [Sp xp];
-    Spp = [Spp xpp];
+    [sp,spp,tt] = treTrattiValues_LookAhead(ss,Vn_f23(i),Vt(i),Vn_f23(i+1),A,D,ta(i),tb(i),tc(i));
     
     % vettori di spostamento velocità  e acc totali nei 5 tratti in
     % funzione dello spostamento
-    Y = [Y ss];
-    Yp = [Yp yp];
-    Ypp = [Ypp ypp];
+    S = [S ss];
+    Sp = [Sp sp];
+    Spp = [Spp spp];
     
     if i == 1
         TT = [TT tt];
@@ -161,9 +149,6 @@ end
 
 figure
 treTrattiPlot(TT,S,Sp,Spp,"Cartesiano")
-
-figure
-treTrattiPlot(TT,Y,Yp,Ypp,"Cartesiano")
 
 %%
 
@@ -179,5 +164,9 @@ for i=2:n
 end
  
 figure
-plot(LL,VV,Y,Yp)
-
+plot(LL,VV,S,Sp)
+legend("Velocità Tratto","Velocità Reale","Location","best")
+title("Velocita in funzione dello spazio")
+xlabel("spazio")
+ylabel("velocità")
+grid on

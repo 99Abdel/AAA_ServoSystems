@@ -1,6 +1,7 @@
-function [v,a,tt] = treTrattiValues_LookAhead(T,S,Vi,Vt,Vf,A,D,ta,tb,tc)
+function [v,a,tt] = treTrattiValues_LookAhead(S,Vi,Vt,Vf,A,D,ta,tb,tc)
 
     n = length(S);
+    T = ta+tb+tc;
     
     for i=1:n
         t=(i-1)*T/(n-1); % time from 0 to T with step dT
