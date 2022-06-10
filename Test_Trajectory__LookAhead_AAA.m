@@ -23,7 +23,7 @@ xc1 = double(xc1);  xc2 = double(xc2);
 yc1 = double(yc1);  yc2 = double(yc2);  
 r1 = double(r1);    r2 = double(r2);
 
-N = 100;
+N = 1000;
 
 th1 = linspace(pi/6,-pi,N/2);
 th2 = linspace(0,-pi-pi/6,N/2);
@@ -32,16 +32,29 @@ l1 = abs(-pi-pi/6)*r1;
 l2 = abs((-pi/6-pi)-0)*r2;
 L_t = [l1,l2];
 
-x1 = r1*cos(th1) + xc1;
-x2 = r2*cos(th2) + xc2;
-x_tot = [x1 x2]; 
+% x1 = r1*cos(th1) + xc1;
+% x2 = r2*cos(th2) + xc2;
+% x_tot = [x1 x2]; 
+% 
+% y1 = r1*sin(th1) + yc1;
+% y2 = r2*sin(th2) + yc2;
+% y_tot = [y1 y2]; 
 
-y1 = r1*sin(th1) + yc1;
-y2 = r2*sin(th2) + yc2;
+num = 1;
+x1 = linspace(-num,num,N/2);
+y1 = linspace(-num,num,N/2);
+
+x2 = linspace(num,2*num,N/2);
+y2 = linspace(num,2*num,N/2);
+
+x_tot = [x1 x2]; 
 y_tot = [y1 y2]; 
 
-
 z_tot = zeros(1,N);
+
+l1 = sqrt((num)^2+(num)^2);
+l2 = sqrt(num^2+num^2);
+L_t = [l1,l2];
 
 S = [x_tot;y_tot;z_tot];
 S1 = [];
@@ -93,7 +106,7 @@ n = 2;
 L = L_t;
 A = 5; D = 5;
 
-Vmax = 3; Vi = 0; Vf = 0;
+Vmax = 4; Vi = 1; Vf = 1;
 Vt = [Vmax, Vmax];
 Vn = [Vi, Vmax/2, Vf];
 

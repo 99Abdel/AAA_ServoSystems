@@ -32,16 +32,27 @@ l1 = abs(-pi-pi/6)*r1;
 l2 = abs((-pi/6-pi)-0)*r2;
 L_t = [l1,l2];
 
-x1 = r1*cos(th1) + xc1;
-x2 = r2*cos(th2) + xc2;
+% x1 = r1*cos(th1) + xc1;
+% x2 = r2*cos(th2) + xc2;
+% x_tot = [x1 x2]; 
+% 
+% y1 = r1*sin(th1) + yc1;
+% y2 = r2*sin(th2) + yc2;
+% y_tot = [y1 y2]; 
+
+x1 = linspace(0,,N/2);
+x2 = linspace(5,10,N/2);
 x_tot = [x1 x2]; 
 
-y1 = r1*sin(th1) + yc1;
-y2 = r2*sin(th2) + yc2;
+y1 = linspace(0,5,N/2);
+y2 = linspace(5,10,N/2);
 y_tot = [y1 y2]; 
 
-
 z_tot = zeros(1,N);
+
+l1 = sqrt(5^2+5^2);
+l2 = sqrt(5^2+5^2);
+Lt = [l1,l2];
 
 S = [x_tot;y_tot;z_tot];
 S1 = [];
@@ -89,28 +100,14 @@ for i = 1:N
 end
 
 
-% n = 2;
-% L = L_t;
-% A = 5; D = 5;
-% 
-% Vmax = 3; Vi = 0; Vf = 0;
-% Vt = [Vmax, Vmax];
-% Vn = [Vi, Vmax/2, Vf];
-% 
-% [s,sp,spp] = LookAhead_AAA(n,N,L,ss,Vt,Vn,A,D);
-
+n = 2;
+L = L_t;
 A = 5; D = 5;
-Vmax = 3; Vi = 0; Vf = 0;
 
-for i = 1:(N-1)
-    L(i) = ss(i+1)-ss(i);
-    Vt(i) = Vmax;
-    Vn(i) = Vmax;
-end
+Vmax = 4; Vi = 1; Vf = 1;
+Vt = [Vmax, Vmax];
+Vn = [Vi, Vmax/2, Vf];
 
-Vn(1) = Vi;
-Vn(N/2) = Vmax/2;
-Vn(N) = Vf;
+[s,sp,spp] = LookAhead_AAA(n,N,L,ss,Vt,Vn,A,D);
 
-[s,sp,spp] = LookAhead_AAA(N-1,N-1,L,ss,Vt,Vn,A,D);
 
