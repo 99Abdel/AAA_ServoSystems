@@ -1,4 +1,4 @@
-function [x,xp,xpp]=tretratti_Abdel(t,T,S0,dS,Vi,A,D,T1,T2,T3)
+function [xp,xpp,cost]=tretratti_Abdel(t,T,i,S,Vi,Vt,Vf,V,A,D,T1,T2,T3,cost)
 %
 % legge di moto TreTratti (acc.costante)
 %
@@ -8,33 +8,44 @@ function [x,xp,xpp]=tretratti_Abdel(t,T,S0,dS,Vi,A,D,T1,T2,T3)
 % dS ampiezza movimento
 % l1 lambda1 (durata 1^ intervallo/T  0<l1<1)
 % l3 lambda3 (durata 3^ intervallo/T  0<l3<1)
-% 
-% si assume Vini=Vfin=0
 
-    lambda1 = T1/T;
-    lambda3 = T3/T;
-
-    V=dS/T*2/(2-lambda1-lambda3);
-
-    T1=T*lambda1;
-    T2=T*(1-lambda1-lambda3);
 
     Ta=T1+T2;
 
     if t<T1
-       x=1/2*A*t^2+S0;
-       xp=Vi+A*t;
-       xpp=A;
+        
+        if V(i-1) < Vt
+            %x=1/2*A*t^2+S0;
+            xp=Vi+A*t;
+            xpp=A;
+            cost = i;
+       else
+           xp = Vt;
+           xpp = 0;
+        end
+        
     else
         
        if t<Ta
-          x=1/2*A*T1^2+V*(t-T1)+S0;
-          xp=V;
+          %x=1/2*A*T1^2+V(i)*(t-T1)+S0;
+          xp=Vt;
           xpp=0;
        else
-          x=1/2*A*T1^2+V*T2+V*(t-Ta)-1/2*D*(t-Ta)^2+S0;
-          xp=V-D*(t-Ta);
-          xpp=-D;
+           
+           if V(i-1) > Vf
+               %x=1/2*A*T1^2+V*T2+V*(t-Ta)-1/2*D*(t-Ta)^2+S0;
+               if V(cost) == Vt
+                   xp=Vt-D*(t-Ta);
+                   xpp=-D;
+               else
+                   xp=V(cost)-D*(t-Ta);
+                   xpp=-D;
+               end
+           else
+               xp = Vf;
+               xpp = 0;
+           end
+           
        end
        
     end
