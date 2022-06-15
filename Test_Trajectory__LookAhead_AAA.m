@@ -43,9 +43,6 @@ y_tot = [y1 y2];
 
 z_tot = zeros(1,N);
 
-plot(x_tot,y_tot)
-axis equal
-
 S = [x_tot;y_tot;z_tot];
 S1 = [];
 
@@ -74,12 +71,12 @@ Vn = [Vi, Vmax/2, Vf];
 T = tt(end) - tt(1);
 
 vx = sp.*sin(th_tot);
-vy = sp.*cos(th_tot);
+vy = -sp.*cos(th_tot);
 vz = sp.*0;
 Sp = [vx;vy;vz];
 Sp1 = [];
 
-sppc = (sp.^2)./r1;
+sppc = -(sp.^2)./r1;
 spp_tot = sqrt((spp.^2) + (sppc.^2));
 atx = spp.*sin(th_tot);    acx = sppc.*cos(th_tot);    
 aty = spp.*cos(th_tot);    acy = sppc.*sin(th_tot);
@@ -105,8 +102,8 @@ end
 
 %Plot_Trajectory_animation_AAA(Q,S1,L,2*n,10,"Cartesiano")
 
-% figure
-% hold on
+figure
+hold on
 % for i = 1:2*n
 %    
 %     Plot_AAA(Q(:,i),L,"xyz");
