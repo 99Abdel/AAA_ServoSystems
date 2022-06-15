@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="LookAhead">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/LookAhead.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

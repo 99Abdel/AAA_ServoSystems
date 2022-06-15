@@ -1,4 +1,4 @@
-function [S,Sp,Spp] = LookAhead_AAA(n,N,L,ss,Vt,Vn,A,D)
+function [S,Sp,Spp,TT] = LookAhead_AAA(n,N,L,ss,Vt,Vn,A,D)
 % look ahead è una generalizzazione della 3 tratti, prendere il percorso e
 % rappresentarlo a tratti per ogni tratto mettere velocità maxima da
 % raggiungere stesso ragionamento alla fine, andamaneto velotaà in funzione
