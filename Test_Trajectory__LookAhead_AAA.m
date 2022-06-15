@@ -48,6 +48,7 @@ S1 = [];
 
 alpha = -pi/4;
 Tt = [5,0,10];
+Ttva = [0,0,0];
 
 Q = [];
 Qs = [];
@@ -92,9 +93,9 @@ for i = 1:N
     S1 = [S1 s1];
     q = Inverse_Kinematics_AAA(s1,L,2)';
     Q = [Q q];
-    sp1 = rototrasla_Punto(Sp(:,i),alpha,Tt,'y');
+    sp1 = rototrasla_Punto(Sp(:,i),alpha,Ttva,'y');
     Sp1 = [Sp1 sp1];
-    spp1 = rototrasla_Punto(Spp(:,i),alpha,Tt,'y');
+    spp1 = rototrasla_Punto(Spp(:,i),alpha,Ttva,'y');
     Spp1 = [Spp1 spp1];
     
 end
