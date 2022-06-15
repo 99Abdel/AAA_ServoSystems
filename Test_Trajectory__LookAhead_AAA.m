@@ -101,15 +101,16 @@ for i = 1:N
 end
 
 
-%Plot_Trajectory_animation_AAA(Q,S1,L,2*n,10,"Cartesiano")
+%Plot_Trajectory_animation_AAA(Q,S1,L,N,10,"Cartesiano")
 
 figure
 hold on
-% for i = 1:2*n
-%    
-%     Plot_AAA(Q(:,i),L,"xyz");
-%     
-% end
+
+for i = 1:N
+   
+    Plot_AAA(Q(:,i),L,"xyz");
+    
+end
 
 plot3(x_tot,y_tot,z_tot,"--","LineWidth",2)
 plot3(S1(1,:),S1(2,:),S1(3,:),"-o","LineWidth",2)
