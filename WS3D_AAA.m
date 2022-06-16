@@ -41,10 +41,10 @@ function WS3D_AAA(L,Qmax,Qmin)
     figure
     hold on
     grid on
-    plot3(x_ws,y_ws,z_ws,'.','color',[0.5 0.9 0.6],'MarkerSize',0.7)
+    plot3(x_ws,y_ws,z_ws,'.','color',[0.5 0.9 0.6],'MarkerSize',0.7);
     
-    Plot_AAA(Qmax,L,"xyz")    % plot robot in max position
-    Plot_AAA(Qmin,L,"xyz")    % plot robot in min position
+    Plot_AAA(Qmax,L,"xyz");    % plot robot in max position
+    Plot_AAA(Qmin,L,"xyz");    % plot robot in min position
     
     title("Robot's Working Space (3D Rapresentation)")
     axis equal

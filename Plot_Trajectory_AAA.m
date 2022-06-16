@@ -5,21 +5,21 @@ function Plot_Trajectory_AAA(Qi,Qf,L,X,Y,Z,n,tipo,T)
     
     figure
     hold on
-    Plot_AAA(Qi,L,"xyz")
+    Plot_AAA(Qi,L,"xyz");
     
     if nargin > Argomenti
         dt = T/n;
         
         for i = 1:n
-            plot3(X(i),Y(i),Z(i),'->m')
+            plot3(X(i),Y(i),Z(i),'->m');
             pause(dt)
         end
          
     else
-         plot3(X,Y,Z,'->m')
+         plot3(X,Y,Z,'->m');
     end
     
-    Plot_AAA(Qf,L,"xyz")
+    Plot_AAA(Qf,L,"xyz");
     title(["Traiettoria Robot " tipo])
     
     grid on

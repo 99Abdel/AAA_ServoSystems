@@ -64,8 +64,7 @@ axis equal
 
 
 %% con fimpicit come verifica
-% strana la gestione nei punti di incrocio (lati smussati), assenza punti
-% robot disteso (tetti o parte)
+% strana la gestione nei punti di incrocio (lati smussati), assenza punti robot disteso (tetti o parte)
 
 fun = @(i,j,k) l3^3*cos(i)^2*cos(j)^3*cos(k)^2*sin(k) - l3^3*cos(j)*cos(k)^2*sin(i)^2*sin(k) - l3^3*cos(i)^2*cos(j)*cos(k)^2*sin(k) + l3^3*cos(j)^3*cos(k)^2*sin(i)^2*sin(k) + l2^2*l3*cos(i)^2*cos(j)^3*sin(k) + l2^2*l3*cos(j)^3*sin(i)^2*sin(k) - l2*l3^2*cos(i)^2*cos(j)*cos(k)*sin(k) - l2*l3^2*cos(j)*cos(k)*sin(i)^2*sin(k) + l3^3*cos(i)^2*cos(j)*cos(k)^2*sin(j)^2*sin(k) + l3^3*cos(j)*cos(k)^2*sin(i)^2*sin(j)^2*sin(k) + 2*l2*l3^2*cos(i)^2*cos(j)^3*cos(k)*sin(k) + l2^2*l3*cos(i)^2*cos(j)*sin(j)^2*sin(k) + 2*l2*l3^2*cos(j)^3*cos(k)*sin(i)^2*sin(k) + l2^2*l3*cos(j)*sin(i)^2*sin(j)^2*sin(k) + 2*l2*l3^2*cos(i)^2*cos(j)*cos(k)*sin(j)^2*sin(k) + 2*l2*l3^2*cos(j)*cos(k)*sin(i)^2*sin(j)^2*sin(k);
 figure
