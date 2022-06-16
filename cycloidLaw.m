@@ -6,7 +6,7 @@ function [x,xp,xpp]=cycloidLaw(t,T,S0,dS)
 % T tempo di azionamento
 % S0 posizione iniziale
 % dS ampiezza movimento
-%
+
 
 
     A = dS*2*pi/T^2;

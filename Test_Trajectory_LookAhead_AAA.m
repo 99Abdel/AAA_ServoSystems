@@ -4,9 +4,9 @@ close all
 
 
 %% Test traiettoria numero 3
-
+l1 = 12; l2 = 7; l3 = 4;
 % dati
-L = [12, 7, 4];
+L = [l1, l2, l3];
 
 A = [6,4];
 B = [4,2];
@@ -23,7 +23,7 @@ xc1 = double(xc1);  xc2 = double(xc2);
 yc1 = double(yc1);  yc2 = double(yc2);  
 r1 = double(r1);    r2 = double(r2);
 
-N = 100;
+N = 500;
 
 th1 = linspace(pi/6,-pi,N/2);
 th2 = linspace(0,-pi-pi/6,N/2);
@@ -50,9 +50,6 @@ alpha = -pi/4;
 Tt = [5,0,12];
 Ttva = [0,0,0];
 
-Q = [];
-Qs = [];
-
 for i = 1:N
    
     ss(i) = sqrt(S(1,i)^2 + S(2,i)^2 + S(3,i)^2);
@@ -62,10 +59,10 @@ end
 
 % dati cinematici robot
 n = 2;
-A = 3; D = 5;
+A = 4; D = 4;
 L_t = L_t;
 
-Vmax = 2; Vi = 1; Vf = 1;
+Vmax = 2; Vi = 0.5; Vf = 0.5;
 Vt = [Vmax, Vmax];
 Vn = [Vi, Vmax/2, Vf];
 
@@ -94,7 +91,13 @@ Spp = [ax;ay;az];
 Spp1 = [];
 
 
+Q = [];
+Qs = [];
+Qp = [];
+Qpp = [];
 % calcolo traiettoria
+
+
 for i = 1:N
     
     s1 = rototrasla_Punto(S(:,i),alpha,Tt,'y');
@@ -106,11 +109,23 @@ for i = 1:N
     spp1 = rototrasla_Punto(Spp(:,i),alpha,Ttva,'y');
     Spp1 = [Spp1 spp1];
     
+    j = Jac_AAA(q,L);
+    sp_inv = sp1;
+    jinv = (j^-1);
+    qp = jinv*sp1(1:3);
+    Qp = [Qp qp];
+
+    
+    jp = JacP_AAA(q,qp,L);
+    qpp = jinv*(spp1(1:3)-jp*qp);
+    Qpp = [Qpp qpp];
+    
 end
 
 
 % plot animato traiettoria robot
-Plot_Trajectory_animation_AAA(Q,S1,L,N,10,"Cartesiano")
+% figure
+% Plot_Trajectory_animation_AAA(Q,S1,L,N,10,"Cartesiano")
 
 % plot configurazioni assunte
 figure
