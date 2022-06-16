@@ -77,7 +77,7 @@ clear all
 close all
 clc
 
-L = [10, 7, 4];
+L = [12, 7, 4];
 
 A = [6,4];
 B = [4,2];
@@ -108,7 +108,7 @@ S = [x_tot;y_tot;z_tot];
 S1 = [];
 
 alpha = -pi/4;
-T = [5,0,10];
+T = [5,0,12];
 
 Q = [];
 Qs = [];
@@ -124,7 +124,7 @@ for i = 1:2*n
 end
 
 
-Plot_Trajectory_animation_AAA(Q,S1,L,2*n,10,"Cartesiano")
+%Plot_Trajectory_animation_AAA(Q,S1,L,2*n,10,"Cartesiano")
 
 
 figure
