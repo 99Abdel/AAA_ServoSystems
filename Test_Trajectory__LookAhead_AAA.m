@@ -5,7 +5,7 @@ close all
 
 %% Test traiettoria numero 3
 
-
+% dati
 L = [10, 7, 4];
 
 A = [6,4];
@@ -23,7 +23,7 @@ xc1 = double(xc1);  xc2 = double(xc2);
 yc1 = double(yc1);  yc2 = double(yc2);  
 r1 = double(r1);    r2 = double(r2);
 
-N = 500;
+N = 100;
 
 th1 = linspace(pi/6,-pi,N/2);
 th2 = linspace(0,-pi-pi/6,N/2);
@@ -60,23 +60,29 @@ for i = 1:N
 end
 
 
+% dati cinematici robot
 n = 2;
-A = 10; D = 5;
+A = 3; D = 5;
 L_t = L_t;
 
 Vmax = 2; Vi = 1; Vf = 1;
 Vt = [Vmax, Vmax];
 Vn = [Vi, Vmax/2, Vf];
 
+
 [s,sp,spp,tt] = LookAhead_AAA(n,N,L_t,ss,Vt,Vn,A,D);
 T = tt(end) - tt(1);
 
+
+% calcoli valori per singoli assi
+% velocità
 vx = sp.*sin(th_tot);
 vy = -sp.*cos(th_tot);
 vz = sp.*0;
 Sp = [vx;vy;vz];
 Sp1 = [];
 
+% accelerazione
 sppc = -(sp.^2)./r1;
 spp_tot = sqrt((spp.^2) + (sppc.^2));
 atx = spp.*sin(th_tot);    acx = sppc.*cos(th_tot);    
@@ -87,6 +93,8 @@ az = spp.*0;
 Spp = [ax;ay;az];
 Spp1 = [];
 
+
+% calcolo traiettoria
 for i = 1:N
     
     s1 = rototrasla_Punto(S(:,i),alpha,Tt,'y');
@@ -101,8 +109,10 @@ for i = 1:N
 end
 
 
-%Plot_Trajectory_animation_AAA(Q,S1,L,N,10,"Cartesiano")
+% plot animato traiettoria robot
+Plot_Trajectory_animation_AAA(Q,S1,L,N,10,"Cartesiano")
 
+% plot configurazioni assunte
 figure
 hold on
 
@@ -120,8 +130,8 @@ pbaspect([20 20 20])
 grid on
 hold off
 
+
+% plot posizione, velocità e accelerazione X, Y, Z
 dT = T/(N);
 Plot_Graphs_Dir_Kinematics_AAA(S1,Sp1,Spp1,tt,dT)
-
-
 
