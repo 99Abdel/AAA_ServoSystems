@@ -14,7 +14,7 @@ N = 500;
 n = 5;
 L = [1.5, 3, 4, 1, 2];
 Vt = [1, 1.5, 0.5, 2, 3];
-Vn = [0, 1.1, 1, 2, 2.5, 0.5];
+Vn = [0, 1.1, 1, 0.2, 2.5, 0.5];
 A = 1; D = 2;
 
 Vn_f1 = zeros(1,n+1);
@@ -124,6 +124,7 @@ S = [];
 Sp = [];
 Spp = [];
 
+S1 = [];
 Sp1 = [];
 Spp1 = [];
 
@@ -134,16 +135,22 @@ for i = 1:n
    
     % velocità in funzione dello spazio
     ss = linspace(s(i),s(i+1),N);%spazio percorso nella tretratti
+    if i > 1
+        ss = ss +shift; 
+    end
+    shift = ss(end);
+    
     [sp1,spp1,tt] = treTrattiValues_LookAhead(ss,Vn_f23(i),Vt(i),Vn_f23(i+1),A,D,ta(i),tb(i),tc(i));
     
     % Tempo
-    [sp,spp,tt] = treTrattiValues_AAA(ss,Vn_f23(i),Vt(i),Vn_f23(i+1),A,D,ta(i),tb(i),tc(i));
+    [s,sp,spp,tt] = treTrattiValues_AAA(ss,Vn_f23(i),Vt(i),Vn_f23(i+1),A,D,ta(i),tb(i),tc(i)); % da migliorare lo spostamnto
     % vettori di spostamento velocità  e acc totali nei 5 tratti in
     % funzione dello spostamento
-    S = [S ss];
+    S = [S s];
     Sp = [Sp sp];
     Spp = [Spp spp];
     
+
     Sp1 = [Sp1 sp1];
     Spp1 = [Spp1 spp1];
     

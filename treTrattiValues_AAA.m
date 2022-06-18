@@ -1,4 +1,4 @@
-function [v,a,tt] = treTrattiValues_AAA(S,Vi,Vt,Vf,A,D,ta,tb,tc)
+function [x,v,a,tt] = treTrattiValues_AAA(S,Vi,Vt,Vf,A,D,ta,tb,tc)
 
     n = length(S);
     T = ta+tb+tc;
@@ -9,9 +9,9 @@ function [v,a,tt] = treTrattiValues_AAA(S,Vi,Vt,Vf,A,D,ta,tb,tc)
         tt(i)=t;
         
         if i ~= 1
-            [v(i),a(i),cost] = tretratti_AAA(t,T,i,S,Vi,Vt,Vf,v,A,D,ta,tb,tc,cost);
+            [x(i),v(i),a(i),cost] = tretratti_AAA(t,T,i,S,Vi,Vt,Vf,v,A,D,ta,tb,tc,cost);
         else
-            
+            x(1) = S(i);
             v(1) = Vi;
             if ta > 0
                 a(1) = A;
