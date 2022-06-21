@@ -119,6 +119,7 @@ end
 %% tempi
 
 s = [0 s_tot];
+shift = 0;
 
 S = [];
 Sp = [];
@@ -132,28 +133,16 @@ TT = [];
 
 
 for i = 1:n
-   
-    % velocità in funzione dello spazio
-    ss = linspace(s(i),s(i+1),N);%spazio percorso nella tretratti
-    if i > 1
-        ss = ss +shift; 
-    end
-    shift = ss(end);
+       
+    % vettori di spostamento velocità  e acc totali nei 5 tratti in funzione del tempo
+    [s,sp,spp,tt] = treTrattiValues_AAA(shift,Vn_f23(i),Vt(i),Vn_f23(i+1),A,D,ta(i),tb(i),tc(i),N);
     
-    [sp1,spp1,tt] = treTrattiValues_LookAhead(ss,Vn_f23(i),Vt(i),Vn_f23(i+1),A,D,ta(i),tb(i),tc(i));
-    
-    % Tempo
-    [s,sp,spp,tt] = treTrattiValues_AAA(ss,Vn_f23(i),Vt(i),Vn_f23(i+1),A,D,ta(i),tb(i),tc(i)); % da migliorare lo spostamnto
-    % vettori di spostamento velocità  e acc totali nei 5 tratti in
-    % funzione dello spostamento
+    shift = s(end);
+
     S = [S s];
     Sp = [Sp sp];
     Spp = [Spp spp];
-    
-
-    Sp1 = [Sp1 sp1];
-    Spp1 = [Spp1 spp1];
-    
+        
     if i == 1
         TT = [TT tt];
     else
@@ -179,7 +168,7 @@ for i=2:n
 end
  
 figure
-plot(LL,VV,S,Sp1)
+plot(LL,VV,S,Sp)
 legend("Velocità Tratto","Velocità Reale","Location","best")
 title("Velocita in funzione dello spazio")
 xlabel("spazio")

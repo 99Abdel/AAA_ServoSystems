@@ -1,5 +1,4 @@
 function [x,xp,xpp]=look_ahead(t,T,S,Vi,Vf)
-%
 % regole magiche look ahead
 % Minimizzare il tempo di attuazione in tutto l'intervallo
 % USARE l'accelerazione e decelerazione che minimizzi il TEMPO IN ALTRE

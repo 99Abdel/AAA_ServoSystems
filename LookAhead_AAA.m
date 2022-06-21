@@ -100,7 +100,9 @@ function [S,Sp,Spp,TT] = LookAhead_AAA(n,N,L,ss,Vt,Vn,A,D)
     end
     
 
-    S = ss;
+    shift = ss(1);
+
+    S = [];
     Sp = [];
     Spp = [];
 
@@ -109,14 +111,12 @@ function [S,Sp,Spp,TT] = LookAhead_AAA(n,N,L,ss,Vt,Vn,A,D)
 
     for i = 1:n
 
-        % velocità in funzione dello spazio
-        ll = i*N/n;
-        ii = 1+(i-1)*N/n;
-        ss_i = ss(ii:ll);
-        [sp,spp,tt] = treTrattiValues_LookAhead(ss_i,Vn_f1(i),Vt(i),Vn_f1(i+1),A,D,ta(i),tb(i),tc(i));
+        % vettori di spostamento velocità  e acc totali nei 5 tratti in funzione del tempo
+        [s,sp,spp,tt] = treTrattiValues_AAA(shift,Vn_f1(i),Vt(i),Vn_f1(i+1),A,D,ta(i),tb(i),tc(i),N);
+        
+        shift = s(end);
 
-        % vettori di spostamento velocità  e acc totali nei 5 tratti in
-        % funzione dello spostamento
+        S = [S s];
         Sp = [Sp sp];
         Spp = [Spp spp];
 
