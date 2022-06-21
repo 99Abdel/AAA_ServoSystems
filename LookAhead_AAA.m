@@ -113,7 +113,7 @@ function [S,Sp,Spp,TT] = LookAhead_AAA(n,N,L,ss,Vt,Vn,A,D)
         ll = i*N/n;
         ii = 1+(i-1)*N/n;
         ss_i = ss(ii:ll);
-        [sp,spp,tt] = treTrattiValues_AAA(ss_i,Vn_f1(i),Vt(i),Vn_f1(i+1),A,D,ta(i),tb(i),tc(i));
+        [sp,spp,tt] = treTrattiValues_LookAhead(ss_i,Vn_f1(i),Vt(i),Vn_f1(i+1),A,D,ta(i),tb(i),tc(i));
 
         % vettori di spostamento velocità  e acc totali nei 5 tratti in
         % funzione dello spostamento
