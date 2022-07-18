@@ -129,8 +129,6 @@ function [S,Sp,Spp,TT] = LookAhead_AAA(n,N,L,ss,Vt,Vn,A,D)
     end
     
 
-    figure
-    treTrattiPlot(TT,S,Sp,Spp,"Cartesiano")
 
     
 % va bene solo se S e L partono entrambi da 0 e sono crescenti...
