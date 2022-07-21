@@ -4,9 +4,9 @@ close all
 
 
 % Test traiettoria numero 3
-l1 = 12; l2 = 7; l3 = 4;
+link1 = 12; link2 = 7; link3 = 4;
 % dati
-L = [l1, l2, l3];
+L = [link1, link2, link3];
 
 A = [1,-2];
 B = [2,-1];
@@ -79,7 +79,6 @@ T = tt(end) - tt(1);
 dT = tt(2) - tt(1);
 Plot_Single_Graph_Dir_Kinematics_AAA(s,sp,spp,tt,dT);
 
-
 %% vecchio
 
 
@@ -118,7 +117,8 @@ for i=1:N-1
     
     ds = norm(S(:,i+1)-S(:,i));
     DS = [DS ds];
-   if (sp(i) == Vmax || spp(i) == 0)
+    
+    if (sp(i) == Vmax || spp(i) == 0)
         dt(i)=ds/sp(i);
     else
         dt(i) = abs((sp(i+1)-sp(i))/spp(i));
@@ -137,9 +137,9 @@ for i=N+1:2*N-1
     end
 end
 
-tt=dt;
+t=dt;
 for i=2:length(dt)
-    tt(i)=tt(i)+tt(i-1);
+    t(i)=t(i)+t(i-1);
 end
 
 
@@ -155,7 +155,7 @@ for i=1:2*N-2
     
 end
 
-Plot_Graphs_Dir_Kinematics_Debug_AAA(S,Sp,Spp,Spt,Sppt,tt);
+Plot_Graphs_Dir_Kinematics_Debug_AAA(S,Sp,Spp,Spt,Sppt,t);
 
 
 %%
@@ -215,5 +215,9 @@ hold off
 
 
 % plot posizione, velocità e accelerazione X, Y, Z
-Plot_Graphs_Dir_Kinematics_AAA(S1,Sp1,Spp1,tt,dT)
+Plot_Graphs_Dir_Kinematics_AAA(S1,Sp1,Spp1,t,dT)
 
+%% Adattamento vettori
+
+tt = [tt(1:N) tt(N+2:end)];
+Q = [Q(:,1:N) Q(:,N+2:end)];
