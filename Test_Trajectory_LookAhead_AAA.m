@@ -75,23 +75,45 @@ Vn = [Vi, 0, Vf];
 
 
 [s,sp,spp,tt] = LookAhead_AAA(n,N,L_t,ss,Vt,Vn,A,D);
+s = s - s(1);
 T = tt(end) - tt(1);
 dT = tt(2) - tt(1);
 Plot_Single_Graph_Dir_Kinematics_AAA(s,sp,spp,tt,dT);
 
 %% vecchio
+% ho la traiettoria S
+x = zeros(1,2*N);
+y = zeros(1,2*N);
+z = zeros(1,2*N);
+Theta1 = [];
+Theta2 = [];
 
+for i = 1:length(s)
+   
+    if i <= N
+        theta1 = th1(1) + s(i)/r1;
+        Theta1 = [Theta1 theta1];
+        x(i) = xc1 + r1*cos(theta1);
+        y(i) = yc1 + r1*sin(theta1);
+    else 
+        theta2 = th2(1) + (s(i)-s(N))/r2;
+        Theta2 = [Theta2 theta2];
+        x(i) = xc2 + r1*cos(theta2);
+        y(i) = yc2 + r1*sin(theta2);
+    end
+   
+    
+end
 
-x = s.*cos(th_tot);
-y = s.*sin(th_tot);
-z = s*0;
 P = [x;y;z];
+
 
 % calcoli valori per singoli assi
 % velocità ------------GIUSTI
+TH_TOT = [Theta1 Theta2];
 
-vx = -sp.*sin(th_tot);
-vy = sp.*cos(th_tot);
+vx = -sp.*sin(TH_TOT);
+vy = sp.*cos(TH_TOT);
 vz = sp.*0;
 Sp = [vx;vy;vz];
 Sp1 = [];
@@ -99,64 +121,20 @@ Sp1 = [];
 % accelerazione ------------GIUSTI
 sppc = -(sp.^2)./r1;
 spp_tot = sqrt((spp.^2) + (sppc.^2));
-atx = -spp.*sin(th_tot);    acx = sppc.*cos(th_tot);
-aty = spp.*cos(th_tot);    acy = sppc.*sin(th_tot);
+atx = -spp.*sin(TH_TOT);    acx = sppc.*cos(TH_TOT);
+aty = spp.*cos(TH_TOT);    acy = sppc.*sin(TH_TOT);
 ax = atx + acx;
 ay = aty + acy;
 az = spp.*0;
 Spp = [ax;ay;az];
 Spp1 = [];
 
-% Plot_Single_Graph_Dir_Kinematics_AAA(s,sp,spp,tt)
-% Plot_Graphs_Dir_Kinematics_noDebug_AAA(S,Sp,Spp,tt)
+tt = [tt(1:N) tt(N+2:end)];
+P = [P(:,1:N) P(:,N+2:end)];
+Sp = [Sp(:,1:N) Sp(:,N+2:end)];
+Spp = [Spp(:,1:N) Spp(:,N+2:end)];
 
-dt = zeros(1,2*N);
-DS = [];
-
-for i=1:N-1
-    
-    ds = norm(S(:,i+1)-S(:,i));
-    DS = [DS ds];
-    
-    if (sp(i) == Vmax || spp(i) == 0)
-        dt(i)=ds/sp(i);
-    else
-        dt(i) = abs((sp(i+1)-sp(i))/spp(i));
-    end
-    
-end
-
-for i=N+1:2*N-1
-    
-    ds = norm(S(:,i+1)-S(:,i));
-    DS = [DS ds];
-    if (sp(i) == Vmax || spp(i) == 0)
-        dt(i)=ds/sp(i);
-    else
-        dt(i) = abs((sp(i+1)-sp(i))/spp(i));
-    end
-end
-
-t=dt;
-for i=2:length(dt)
-    t(i)=t(i)+t(i-1);
-end
-
-
-for i=1:2*N-1
-   
-    Spt(:,i) = (S(:,i+1)-S(:,i))/dt(i);
-    
-end
-
-for i=1:2*N-2
-   
-    Sppt(:,i) = (Spt(:,i+1)-Spt(:,i))/dt(i);
-    
-end
-
-Plot_Graphs_Dir_Kinematics_Debug_AAA(S,Sp,Spp,Spt,Sppt,t);
-
+Plot_Graphs_Dir_Kinematics_AAA(P,Sp,Spp,tt,dT)
 
 %%
 Q = [];
@@ -166,9 +144,9 @@ Qpp = [];
 % calcolo traiettoria
 
 
-for i = 1:2*N
+for i = 1:length(tt)
     
-    s1 = rototrasla_Punto(S(:,i),alpha,Tt,'y');
+    s1 = rototrasla_Punto(P(:,i),alpha,Tt,'y');
     S1 = [S1 s1];
     q = Inverse_Kinematics_AAA(s1,L,2)';
     Q = [Q q];
@@ -199,7 +177,7 @@ end
 figure
 hold on
 
-for i = 1:2*N
+for i = 1:length(tt)
     
     Plot_AAA(Q(:,i),L,"xyz");
     
@@ -215,9 +193,4 @@ hold off
 
 
 % plot posizione, velocità e accelerazione X, Y, Z
-Plot_Graphs_Dir_Kinematics_AAA(S1,Sp1,Spp1,t,dT)
-
-%% Adattamento vettori
-
-tt = [tt(1:N) tt(N+2:end)];
-Q = [Q(:,1:N) Q(:,N+2:end)];
+Plot_Graphs_Dir_Kinematics_AAA(S1,Sp1,Spp1,tt,dT)
