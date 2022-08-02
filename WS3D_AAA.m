@@ -2,11 +2,9 @@ function WS3D_AAA(L,Qmax,Qmin)
 % Calcolo dei Punti del Workspace 3D
     
     n = 200;
-    a1 = linspace(0,1.8*pi,n);       % da 0 a 160
-    a2 = linspace(0,-1.8*pi,n);      % da 0 a -160
-    a = cat(1,a1,a2);                % unione array
-% old    a = linspace(0,2*pi,n);          % da 0 a 360 (0, 2*pi)
-    b = linspace(-pi/2,pi/2,n);      % da -90 a 90 (-pi/2, pi/2)
+
+    a = linspace(0,2*pi,n);          % da 0 a 360 (0, 2*pi)
+    b = linspace(-pi/2,pi/2,n);      % da -90 a 90 (-pi/2,pi/2)
     c = linspace(0,2*pi,3);          % da 0 a 360 (0, 2*pi)
     
     l1 = L(1);

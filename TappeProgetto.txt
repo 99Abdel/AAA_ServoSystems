@@ -1,7 +1,7 @@
 1-CINEMATICA DIRETTA                                | FATTO
 2-JACOBIANI E SINGOLARITA                           | FATTO
 3-CINEMATICA INVERSA NUMERICA                       | FATTO
-4-DINAMICA			                    | FATTO
+4-DINAMICA			                                | FATTO
 5-CINEMATICA INVERSA ANALITICA	                    | FATTO
 6-DEFINIZIONE PIANO INCLINATO                       | FATTO
 7-DEFINIZIONE TRAIETTORIA CON ARCHI DI CERCHIO      | FATTO
