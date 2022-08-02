@@ -89,6 +89,7 @@ F = [0,4];
 
 [xc1,yc1,r1] = Find_Circ(A,B,C);
 [xc2,yc2,r2] = Find_Circ(D,E,F);
+
 n = 50;
 th1 = linspace(pi/6,-pi,n);
 th2 = linspace(0,-pi-pi/6,n);
