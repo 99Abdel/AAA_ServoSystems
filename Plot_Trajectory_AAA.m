@@ -25,9 +25,9 @@ function Plot_Trajectory_AAA(Qi,Qf,L,X,Y,Z,n,tipo,T)
     grid on
     axis equal
     pbaspect([20 20 20])
-    xlabel('x')
-    ylabel('y')
-    zlabel('z')
+    xlabel('x [m]')
+    ylabel('y [m]')
+    zlabel('z [m]')
     hold off
     
 end

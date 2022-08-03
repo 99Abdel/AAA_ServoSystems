@@ -32,6 +32,7 @@ function n_plot = Plot_AAA(Q,L,dim)
         plot(X(1:2), Y(1:2), 'LineWidth',2,'color','r');
         plot(X(2:3), Y(2:3), 'LineWidth',2,'color','b');
         plot(X(3:4), Y(3:4), 'LineWidth',2,'color','g');
+        
     
     elseif dim == "xz" 
 
@@ -40,6 +41,7 @@ function n_plot = Plot_AAA(Q,L,dim)
         plot(X(2:3), Z(2:3), 'LineWidth',2,'color','b');
         plot(X(3:4), Z(3:4), 'LineWidth',2,'color','g');
 
+
     elseif dim == "yz"
 
         % Plot robot nello spazio 2D:
@@ -47,13 +49,14 @@ function n_plot = Plot_AAA(Q,L,dim)
         plot(Y(2:3), Z(2:3), 'LineWidth',2,'color','b');
         plot(Y(3:4), Z(3:4), 'LineWidth',2,'color','g');
 
+        
     elseif dim == "xyz"
         
         % Plot robot nello spazio 3D:
         n_plot(1) = plot3(X(1:2), Y(1:2), Z(1:2), 'LineWidth',2,'color','r');
         n_plot(2) = plot3(X(2:3), Y(2:3), Z(2:3), 'LineWidth',2,'color','b');
         n_plot(3) = plot3(X(3:4), Y(3:4), Z(3:4), 'LineWidth',2,'color','g');
-
+        
     end
 
 
