@@ -50,9 +50,9 @@ function WS3D_AAA(L,Qmax,Qmin)
     title("Robot's Working Space (3D Rapresentation)")
     axis equal
     view(27,26)
-    xlabel('x')
-    ylabel('y')
-    zlabel('z')
+    xlabel('x [m]')
+    ylabel('y [m]')
+    zlabel('z [m]')
     hold off
 
 

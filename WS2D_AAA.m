@@ -31,8 +31,8 @@ function WS2D_AAA(L,Qmax,Qmin,assi)
         
         grid on
         axis equal
-        xlabel(assi(1))
-        ylabel(assi(2))
+        xlabel(strcat(assi(1)," [m]"))
+        ylabel(strcat(assi(2),' [m]'))
         title("Robot's Working Area (PLANE " + assi + ")")
         hold off
 
