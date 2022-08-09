@@ -8,9 +8,9 @@ function Plot_Trajectory_animation_AAA(Q,S,L,n,T,tipo)
     grid on
     axis equal
     pbaspect([20 20 20])
-    xlabel('x')
-    ylabel('y')
-    zlabel('z')
+    xlabel('x [m]')
+    ylabel('y [m]')
+    zlabel('z [m]')
     
     for i = 1:n
         plot3(S(1,i),S(2,i),S(3,i),'->m')

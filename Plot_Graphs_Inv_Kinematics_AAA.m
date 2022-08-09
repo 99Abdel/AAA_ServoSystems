@@ -13,18 +13,24 @@ function Plot_Graphs_Inv_Kinematics_AAA(Q,Qp,Qpp,tt,dT)
     plot(tt,Q(1,:),tt,Qp(1,:),tt,Qpp(1,:),tt(1:m),Qpt(1,1:m),"--",tt(1:mp),Qppt(1,1:mp),"--")
     legend("a","ap","app","ap#","app#")
     title("Joint Data Alpha")
+    ylabel('rad - rad/s - rad/s^2')
+    xlabel('time [s]')
     grid on
 
     figure
     plot(tt,Q(2,:),tt,Qp(2,:),tt,Qpp(2,:),tt(1:m),Qpt(2,1:m),"--",tt(1:mp),Qppt(2,1:mp),"--")
     legend("b","bp","bpp","bp#","bpp#")
     title("Joint Data Beta")
+    ylabel('rad - rad/s - rad/s^2')
+    xlabel('time [s]')
     grid on
 
     figure
     plot(tt,Q(3,:),tt,Qp(3,:),tt,Qpp(3,:),tt(1:m),Qpt(3,1:m),"--",tt(1:mp),Qppt(3,1:mp),"--")
     legend("c","cp","cpp","cp#","cpp#")
     title("Joint Data Gamma")
+    ylabel('rad - rad/s - rad/s^2')
+    xlabel('time [s]')
     grid on
 
 

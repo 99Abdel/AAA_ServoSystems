@@ -10,6 +10,8 @@ function Plot_Single_Graph_Dir_Kinematics_AAA(S,Sp,Spp,tt,dT)
     plot(tt,S,tt,Sp,tt,Spp,tt(1:m),Spt(1,1:m),"--",tt(1:mp),Sppt(1,1:mp),"--",[tt(1) tt(end)], [0 0],'k')
     legend("s","sp","spp","sp#","spp#","Location","best")
     title("Cartesian Data S")
+    ylabel('m - m/s - m/s^2')
+    xlabel('time [s]')
     grid on
 
 

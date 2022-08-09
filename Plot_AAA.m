@@ -32,6 +32,8 @@ function n_plot = Plot_AAA(Q,L,dim)
         plot(X(1:2), Y(1:2), 'LineWidth',2,'color','r');
         plot(X(2:3), Y(2:3), 'LineWidth',2,'color','b');
         plot(X(3:4), Y(3:4), 'LineWidth',2,'color','g');
+        ylabel('m')
+        xlabel('m')
         
     
     elseif dim == "xz" 
@@ -40,6 +42,8 @@ function n_plot = Plot_AAA(Q,L,dim)
         plot(X(1:2), Z(1:2), 'LineWidth',2,'color','r');
         plot(X(2:3), Z(2:3), 'LineWidth',2,'color','b');
         plot(X(3:4), Z(3:4), 'LineWidth',2,'color','g');
+        ylabel('m')
+        xlabel('m')
 
 
     elseif dim == "yz"
@@ -48,6 +52,8 @@ function n_plot = Plot_AAA(Q,L,dim)
         plot(Y(1:2), Z(1:2), 'LineWidth',2,'color','r');
         plot(Y(2:3), Z(2:3), 'LineWidth',2,'color','b');
         plot(Y(3:4), Z(3:4), 'LineWidth',2,'color','g');
+        ylabel('m')
+        xlabel('m')
 
         
     elseif dim == "xyz"
@@ -56,6 +62,9 @@ function n_plot = Plot_AAA(Q,L,dim)
         n_plot(1) = plot3(X(1:2), Y(1:2), Z(1:2), 'LineWidth',2,'color','r');
         n_plot(2) = plot3(X(2:3), Y(2:3), Z(2:3), 'LineWidth',2,'color','b');
         n_plot(3) = plot3(X(3:4), Y(3:4), Z(3:4), 'LineWidth',2,'color','g');
+        xlabel('x [m]')
+        ylabel('y [m]')
+        zlabel('z [m]')
         
     end
 
