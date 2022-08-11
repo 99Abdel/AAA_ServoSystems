@@ -16,7 +16,7 @@ function [S,M01,M12,M23] = Rotation_Matrixes_AAA(Q,L)
     
     M01 = [cos(a),-sin(a), 0, 0;
            sin(a), cos(a), 0, 0;
-            0,       0,    1, 0;    % se si vuolesse spostare il primo giunto modifica l1+h
+            0,       0,    1, l1;    % se si vuolesse spostare il primo giunto modifica l1+h
             0,       0,    0, 1];
     
 
