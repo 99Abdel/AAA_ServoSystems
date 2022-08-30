@@ -1,8 +1,8 @@
 function [T,lambda1,lambda3] = min_actuation_time_AAA(A,D,V,dS)
 
-t1 = V/A;
-t3 = V/D;
-t2 = dS/V - 1/2*V*(A+D)/(A*D);
+t1 = V/A; % tempo accelerazione
+t3 = V/D; % tempo decelerazione 
+t2 = dS/V - 1/2*V*(A+D)/(A*D); % tempo a velocità costante (se negativo non c'è il tratto).
 
 if t2 <= 0
    t1 = sqrt(D/A * (2*dS)/(A+D));
