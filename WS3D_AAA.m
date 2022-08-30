@@ -23,10 +23,12 @@ function WS3D_AAA(L,Qmax,Qmin)
     for i = 1:length(a)
         for j = 1:length(b)
                 
+                % coordinate sfera max
                 x_max = [x_max (l2*cos(b(j))*cos(a(i)) + l3*cos(b(j))*cos(a(i)+c(1)))];
                 y_max = [y_max (l2*cos(b(j))*sin(a(i)) + l3*cos(b(j))*sin(a(i)+c(1)))];
                 z_max = [z_max (l1 - l2*sin(b(j)) - l3*cos(c(1))*sin(b(j)))];
                 
+                % coordinate sfera minima
                 x_min = [x_min (l2*cos(b(j))*cos(a(i)) + l3*cos(b(j))*cos(a(i)+c(2)))];
                 y_min = [y_min (l2*cos(b(j))*sin(a(i)) + l3*cos(b(j))*sin(a(i)+c(2)))];
                 z_min = [z_min (l1 - l2*sin(b(j)) - l3*cos(c(2))*sin(b(j)))];

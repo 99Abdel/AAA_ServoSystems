@@ -4,18 +4,18 @@ function WS2D_AAA(L,Qmax,Qmin,assi)
     circ = linspace(0,2*pi,1000)';
 
     if assi == "xy"
-
+        % coordinate circonferenza esterna e interna
         circ_ext = [(L(2)+L(3))*cos(circ) (L(2)+L(3))*sin(circ)];
         circ_int = [(L(2)-L(3))*cos(circ) (L(2)-L(3))*sin(circ)];
 
       elseif assi == "xz" || assi == "yz"
-    
+        % coordinate circonferenza esterna e interna
         circ_ext = [(L(2)+L(3))*cos(circ) L(1)+(L(2)+L(3))*sin(circ)];
         circ_int = [(L(2)-L(3))*cos(circ) L(1)+(L(2)-L(3))*sin(circ)];
 
     end
 
-        
+        % area tra circonferenza esterna e interna (da sfumare poi nel plot)
         area_x = [circ_int(:,1); circ_ext(:,1)];
         area_y = [circ_int(:,2); circ_ext(:,2)];
         
